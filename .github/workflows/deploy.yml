@@ -22,3 +22,14 @@ jobs:
         
             - name: 진짜 다운 됐나?
               run: ls
+            
+            - name: 의존성 설치, 빌드
+              run: |
+                npm install
+                npm run build
+            
+            - name: dist 폴더 확인
+              run: |
+                cd dist
+                ls
+
