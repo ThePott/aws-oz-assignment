@@ -4,10 +4,21 @@ on:
     push:
         branches:
             - main
+# 할 것
+# 1. 인증
+# 2. s3 버킷 비우기
+# 3. repo download
+# 4. npm install
+# 5. npm run build
+# 6. dist 폴더 내용물 s3에 올리기
+# 7. cloudfront invalidate cache
 
 jobs:
     My-CI-CD-Jobs:
         runs-on: ubuntu-latest
         steps:
-            - name: 아무거나 실행해보기
-              run: echo "이히히히"
+            - name: 깃헙에서 레포 다운받기
+              uses: actions/checkout@v5
+        
+            - name: 진짜 다운 됐나?
+              run: ls
