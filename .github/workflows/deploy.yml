@@ -20,19 +20,11 @@ jobs:
             # https://github.com/actions/checkout
             - name: 깃헙에서 레포 다운받기
               uses: actions/checkout@v5
-        
-            - name: 진짜 다운 됐나?
-              run: ls
             
             - name: 의존성 설치, 빌드
               run: |
                 npm install
                 npm run build
-            
-            - name: dist 폴더 확인
-              run: |
-                cd dist
-                ls
             
             # https://github.com/aws-actions/configure-aws-credentials
             # aws console에서 현재 지역을 확인할 수 있음
@@ -42,7 +34,10 @@ jobs:
                 aws-region: ap-northeast-2
                 aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
                 aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-
+            
+                # -r이 안 됨. 같은 이유로 -rf 도 안 될 것
             - name: S3 버켓에 있는 모든 파일 삭제
-              run: |
-                aws s3 rm --recursive s3://aws-oz-assignment
+              run: aws s3 rm --recursive s3://aws-oz-assignment
+            
+            - name: dist 폴더 내용물 업로드
+              run: aws cp ./dist s3://aws-oz-assignment/ --recursive
