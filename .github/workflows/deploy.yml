@@ -35,9 +35,10 @@ jobs:
                 aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
                 aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
             
-                # -r이 안 됨. 같은 이유로 -rf 도 안 될 것
+            # -r이 안 됨. 같은 이유로 -rf 도 안 될 것
+            # aws 명령어 쓸 땐 꼭 s3 써줘야 함 << 아주 중요`
             - name: S3 버켓에 있는 모든 파일 삭제
               run: aws s3 rm --recursive s3://aws-oz-assignment
             
             - name: dist 폴더 내용물 업로드
-              run: aws cp ./dist s3://aws-oz-assignment/ --recursive
+              run: aws s3 cp ./dist s3://aws-oz-assignment/ --recursive
