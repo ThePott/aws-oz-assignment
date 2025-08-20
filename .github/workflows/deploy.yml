@@ -42,3 +42,6 @@ jobs:
             
             - name: dist 폴더 내용물 업로드
               run: aws s3 cp ./dist s3://aws-oz-assignment --recursive
+
+            - name: CloudFront 캐시 무효화
+              run: aws cloudFront create-invalidation --distribution-id E1KKUONDTQ982M --path "/*"
