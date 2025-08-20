@@ -45,4 +45,4 @@ jobs:
 
             - name: S3 버켓에 있는 모든 파일 삭제
               run: |
-                aws rm -r s3://aws-oz-assignment
+                aws s3 rm -r s3://aws-oz-assignment
