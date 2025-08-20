@@ -41,4 +41,4 @@ jobs:
               run: aws s3 rm --recursive s3://aws-oz-assignment
             
             - name: dist 폴더 내용물 업로드
-              run: aws s3 cp ./dist s3://aws-oz-assignment/ --recursive
+              run: aws s3 cp ./dist s3://aws-oz-assignment --recursive
