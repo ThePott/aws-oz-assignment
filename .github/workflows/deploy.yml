@@ -7,7 +7,7 @@ on:
 
 jobs:
     My-CI-CD-Jobs:
-        runs-on: ubuntu@latest
+        runs-on: ubuntu-latest
         steps:
             - name: 아무거나 실행해보기
               run: echo "이히히히"
